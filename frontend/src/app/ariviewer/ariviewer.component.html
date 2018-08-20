@@ -1,0 +1,217 @@
+<div style="position: absolute; top: 0%; left: 0%; width: 100%">
+    <header class="header-6">
+        <div class="branding">
+            <a href="..." class="nav-link">
+                <img src="../../images/ARi_logo.png" style="position: absolute; width: 3.75%; height: 44%; left: 2%">
+            </a>
+        </div>
+        <div class="header-actions">
+            <clr-dropdown clrMenuPosition="bottom-right" style="position: absolute; right: 2%">
+                <button type="button" class="close" aria-label="Close" style="position: absolute; right: 2%" clrDropdownToggle>
+                    <span>
+                    <clr-icon shape="user" style="position: absolute; right:100%">  </clr-icon>
+                        {{ firstName }} {{ lastName }}  (arc13)
+                    </span>
+                    <clr-icon shape="caret down">  </clr-icon>
+                  </button>
+                <clr-dropdown-menu style="position: absolute; right: 4%" >
+                    <a href="#" [routerLink]="['../account']" routerLinkActive="active" clrDropdownItem>My Account</a>
+                    <a href="#" [routerLink]="['../settings']" routerLinkActive="active" clrDropdownItem>Settings</a>
+                    <a href="#" (click)="logout()" clrDropdownItem>Log out</a>
+                </clr-dropdown-menu>
+            </clr-dropdown>
+        </div>
+    </header>
+
+    <nav class="sub-nav" [clr-nav-level]="1">
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link" href="#" [routerLink]="['../../../home']" routerLinkActive="active">Dashboard</a>
+            </li>
+            <!--
+            <li class="nav-item">
+                <a class="nav-link" href="#" [routerLink]="['../../cal']" routerLinkActive="active">Planner</a>
+            </li>
+            -->
+            <li class="nav-item">
+                <a class="nav-link" href="#" [routerLink]="['../../../askari']" routerLinkActive="active">Ask ARi</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" [routerLink]="['../../../courses']" routerLinkActive="active">Courses</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" [routerLink]="['../../../assignments']" routerLinkActive="active">Assignments</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" [routerLink]="['../../../grades']" routerLinkActive="active" *ngIf="!isStaff">Grades</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+<h3 style="position: absolute; top: 10%; left: 2%; color: #6ECCCA; font-weight: bold">ARi Viewer</h3>
+<hr style="position: absolute; top: 15%; left: 2%; width: 8%; height: 0.28%; background-color: #4390BC; border: none">
+<div *ngIf="urlsLoaded">
+        <div style="float:left; width:50%; height:30%">
+        <h2 class="ariviewer-video-header">Lecture Video
+            <a class="btn btn-link" style="color:black; width: 0.5%"(click)="hideVideoPress()">
+                <clr-icon *ngIf="!videoHidden" shape="caret" dir="up"></clr-icon>
+                <clr-icon *ngIf="videoHidden" shape="caret" dir="down"></clr-icon>
+            </a>
+        </h2>
+
+        <div class="ariviewer-video" *ngIf="!videoHidden">
+            <iframe [src]="videoUrl | safe"
+                    width="90%" height="200%">Loading...</iframe>
+        </div>
+    </div>
+
+    <div style="float:right; width:50%; height:30%">
+        <h2 class="ariviewer-slides-header">Lecture Slides
+            <a class="btn btn-link" style="color:black; width: 0.5%"(click)="hideSlidesPress()">
+                <clr-icon *ngIf="!slidesHidden" shape="caret" dir="up"></clr-icon>
+                <clr-icon *ngIf="slidesHidden" shape="caret" dir="down"></clr-icon>
+            </a>
+        </h2>
+
+        <div class="ariviewer-slides" *ngIf="!slidesHidden">
+            <iframe [src]="slidesUrl + '#toolbar=0&navpanes=0&scrollbar=0' | safe"
+                    width="200%" height="200%">Loading...</iframe>
+        </div>
+    </div>
+
+    <div style="float:left; width:45%; height:90%" class="ariviewer-notes" *ngIf="!videoHidden">
+        <clr-tabs>
+            <clr-tab-link>Ask A Question</clr-tab-link>
+
+            <clr-tab-content>
+                <form>
+                    <div>
+                        <label>Course : <b>{{ courseCode }}</b></label><br>
+                        <label>Lecture : <b>{{ lectureDetails.name }}</b></label>
+                    </div>
+                    <p></p>
+                    <div>
+                        <label>Question Title
+                            <input type="text" (keypress)="evaluateQuestionTitle()" [(ngModel)]="model.title" [ngModelOptions]="{standalone: true}" #title="ngModel" required>
+                        </label>
+                    </div>
+                    <p></p>
+                    <div class="alert" *ngIf="!validQuestionTitle">This field is required</div>
+                    <div>
+                        <label>Enter Question
+                            <textarea (keypress)="evaluateQuestionBody()" [(ngModel)]="model.body" [ngModelOptions]="{standalone: true}" #body="ngModel" required></textarea>
+                        </label>
+                    </div>
+                    <div class="alert" *ngIf="!validQuestionBody">You must specify a description that's between 10 and 500 characters.</div>
+                    <input type="submit" (click)="(validQuestionTitle && validQuestionBody) && createQuestion()" class="btn btn-primary" value="Submit Form">
+                </form>
+            </clr-tab-content>
+
+            <clr-tab-link>Notes</clr-tab-link>
+
+            <clr-tab-content>
+                <form>
+                    <textarea [(ngModel)]="model.notes" [ngModelOptions]="{standalone: true}" #notes="ngModel" required></textarea>
+                    <input type="submit" (click)="saveNotes()" class="btn btn-primary" value="Save Notes">
+                </form>
+            </clr-tab-content>
+
+
+
+        </clr-tabs>
+    </div>
+
+    <div style="float:left; width:45%; height:90%" class="ariviewer-notes-2" *ngIf="videoHidden">
+        <clr-tabs>
+            <clr-tab-link>Ask A Question</clr-tab-link>
+
+            <clr-tab-content>
+                <form>
+                    <h2>Ask A Question</h2>
+                    <div>
+                        <label>Course : <b>{{ courseCode }}</b></label><br>
+                        <label>Lecture : <b>{{ lectureDetails.name }}</b></label>
+                    </div>
+                    <p></p>
+                    <div>
+                        <label>Question Title
+                            <input type="text" (keypress)="evaluateQuestionTitle()" [(ngModel)]="model.title" [ngModelOptions]="{standalone: true}" #title="ngModel" required>
+                        </label>
+                    </div>
+                    <p></p>
+                    <div class="alert" *ngIf="!validQuestionTitle">This field is required</div>
+                    <div>
+                        <label>Enter Question
+                            <textarea (keypress)="evaluateQuestionBody()" [(ngModel)]="model.body" [ngModelOptions]="{standalone: true}" #body="ngModel" required></textarea>
+                        </label>
+                    </div>
+                    <div class="alert" *ngIf="!validQuestionBody">You must specify a description that's between 10 and 500 characters.</div>
+                    <input type="submit" (click)="(validQuestionTitle && validQuestionBody) && createQuestion()" class="btn btn-primary" value="Submit Form">
+                </form>
+            </clr-tab-content>
+
+            <clr-tab-link>Ask A Question</clr-tab-link>
+
+            <clr-tab-content>
+                <form>
+                    <h2>Ask A Question</h2>
+                    <div>
+                        <label>Course : <b></b></label><br>
+                        <label>Lecture : <b></b></label>
+                    </div>
+                    <p></p>
+                    <div>
+                        <label>Question Title
+                            <input type="text" [(ngModel)]="model.title" [ngModelOptions]="{standalone: true}" #title="ngModel" required>
+                        </label>
+                    </div>
+                    <p></p>
+                    <div class="alert" *ngIf="!validQuestionTitle" (keypress)="evaluateQuestionTitle()"></div>
+                    <div>
+                        <label>Enter Question
+                            <textarea [(ngModel)]="model.body" [ngModelOptions]="{standalone: true}" #body="ngModel" required></textarea>
+                        </label>
+                    </div>
+                    <div class="alert" *ngIf="!validQuestionBody" (keypress)="evaluateQuestionBody()">You must specify a description that's between 10 and 500 characters.</div>
+                    <input type="submit" class="btn btn-primary" value="Submit Form">
+                </form>
+            </clr-tab-content>
+
+
+            <clr-tab-link>Notes</clr-tab-link>
+
+            <clr-tab-content>
+                <form>
+                    <section class="form-block">
+                        <div class="form-group">
+                            <label for="aForm_1">Title</label>
+                            <input type="text" id="aForm_1" placeholder="Enter title here" size="58">
+                        </div>
+                        <div class="form-group">
+                            <textarea id="aForm_4" rows="5"></textarea>
+                        </div>
+                    </section>
+                </form>
+            </clr-tab-content>
+
+
+        </clr-tabs>
+    </div>
+
+    <h3 style="position: absolute; top: 86%; left: 51%; width: 30%">Related Questions from Ask ARi</h3>
+
+    <clr-datagrid style="position: absolute; top: 90%; left: 51%; width: 47%">
+        <clr-dg-column>Question Title</clr-dg-column>
+        <clr-dg-column>Posted In</clr-dg-column>
+
+        <clr-dg-row *ngFor="let question of questions | slice:0:3">
+            <clr-dg-cell style="background-color: white; font-style: italic" [routerLink]="['/askari', { qTitle: question.title }]" routerLinkActive="active">{{question.title}}</clr-dg-cell>
+            <clr-dg-cell style="background-color: white">{{question.course}}: {{question.lectureTitle}}</clr-dg-cell>
+        </clr-dg-row>
+
+        <clr-dg-footer>
+            <a href="#" [routerLink]="['/askari']" routerLinkActive="active">See More</a>
+        </clr-dg-footer>
+    </clr-datagrid>
+</div>

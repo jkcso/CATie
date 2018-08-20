@@ -1,0 +1,42 @@
+<div class="login-wrapper" style="position: absolute; top: 0%; left: 0%; width: 100%; height: 100%">
+    <form class="login" name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
+        <img src="../images/Slogan.png" style="position: absolute; width: 80%; height: 24%; left: 10%; top: 15%">
+        <h5 class="hint" style="position: absolute; left: 27%; top: 43%">Use your College ID to sign in</h5>
+
+        <!--
+        <div class="login-group" style="position: absolute; left: 11%; top: 40%">
+            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
+                <label for="username" style="position: absolute; left: 13%; top: 40%">Username</label>
+                <input type="text" class="form-control username" style="position: absolute; left: 16%; top: 40%" name="username" type="text" id="login_username" placeholder="Username" [(ngModel)]="model.username" #username="ngModel" required />
+                <div *ngIf="f.submitted && !username.valid" class="help-block">Username is required</div>
+            </div>
+            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
+                <label for="password">Password</label>
+                <input type="password" class="form-control password" type="password" id="login_password" placeholder="Password" name="password" [(ngModel)]="model.password" #password="ngModel" required />
+                <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>
+            </div>
+            <div *ngIf="error" class="alert alert-danger error active">{{error}}</div>
+        </div>
+        -->
+
+        <div [ngClass]="{ 'has-error': f.submitted && !username.valid }">
+            <input type="text" class="form-control username" style="position: absolute; left: 32%; top: 54%; width: 35%; text-align: center" name="username" type="text" id="login_username" placeholder="Username" [(ngModel)]="model.username" #username="ngModel" required />
+        </div>
+        <div *ngIf="f.submitted && !username.valid" [ngClass]="{ 'has-error': f.submitted && !username.valid }" class="help-block" style="position: absolute; left: 32%; top: 58%; width: 35%; text-align: center; color: #0094D2">Username required</div>
+
+        <div [ngClass]="{ 'has-error': f.submitted && !password.valid }">
+            <input type="password" class="form-control password" style="position: absolute; left: 32%; top: 62%; width: 35%; text-align: center" type="password" id="login_password" placeholder="Password" name="password" [(ngModel)]="model.password" #password="ngModel" required />
+            <div *ngIf="f.submitted && !password.valid" class="help-block" style="position: absolute; left: 32%; top: 66%; width: 35%; text-align: center; color: #0094D2">Password required</div>
+        </div>
+
+        <div *ngIf="error" class="alert alert-danger error active">{{error}}</div>
+
+        <div style="position: absolute; top: 69%; width: 10%; left: 32%; align-content: center">
+            <img *ngIf="loading" src="http://egenersac.com/imagenes/loading.gif" style="width: 5%; height: 5%" />
+        </div>
+        <div style="position: absolute; top: 71%; width: 35%; left: 32%">
+            <button class="btn btn-info-outline btn-block" style="color: white; background-color: #6ECCCA; border-color: #6ECCCA" [disabled]="loading" type="submit">Login</button>
+        </div>
+    </form>
+</div>
+

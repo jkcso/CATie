@@ -1,0 +1,26 @@
+.assignments-timetable {
+    position: absolute;
+    top: 1em;
+    left: 1em;
+    right: 1em;
+    bottom: 1em;
+}
+
+.assignments-timetable iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 0;
+    height: 80%;
+    width: 80%;
+}
+
+.clr-icon {
+    &.clr-clarity-logo {
+        background-image: url(../../images/ARi_logo.png);
+    }
+}
+
+.header-6 {
+    background-image: url(../../images/header2.png);
+}

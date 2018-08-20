@@ -1,0 +1,129 @@
+<div style="position: absolute; top: 0%; left: 0%; width: 100%">
+    <header class="header-6">
+        <div class="branding">
+            <a href="..." class="nav-link">
+                <img src="../../images/ARi_logo.png" style="position: absolute; width: 3.75%; height: 44%; left: 2%">
+            </a>
+        </div>
+        <div class="header-actions">
+            <clr-dropdown clrMenuPosition="bottom-right" style="position: absolute; right: 2%">
+                <button type="button" class="close" aria-label="Close" style="position: absolute; right: 2%" clrDropdownToggle>
+                    <span>
+                    <clr-icon shape="user" style="position: absolute; right:100%">  </clr-icon>
+                        {{ firstName }} {{ lastName }}  (arc13)
+                    </span>
+                    <clr-icon shape="caret down">  </clr-icon>
+                  </button>
+                <clr-dropdown-menu style="position: absolute; right: 4%" >
+                    <a href="#" [routerLink]="['../account']" routerLinkActive="active" clrDropdownItem>My Account</a>
+                    <a href="#" [routerLink]="['../settings']" routerLinkActive="active" clrDropdownItem>Settings</a>
+                    <a href="#" (click)="logout()" clrDropdownItem>Log out</a>
+                </clr-dropdown-menu>
+            </clr-dropdown>
+        </div>
+    </header>
+
+    <nav class="sub-nav" [clr-nav-level]="1">
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link" href="#" [routerLink]="['../home']" routerLinkActive="active">Dashboard</a>
+            </li>
+            <!--
+            <li class="nav-item">
+                <a class="nav-link" href="#" [routerLink]="['../cal']" routerLinkActive="active">Planner</a>
+            </li>
+            -->
+            <li class="nav-item">
+                <a class="nav-link" href="#" [routerLink]="['../askari']" routerLinkActive="active">Ask ARi</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" [routerLink]="['../courses']" routerLinkActive="active">Courses</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" [routerLink]="['../assignments']" routerLinkActive="active">Assignments</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" [routerLink]="['../grades']" routerLinkActive="active" *ngIf="!isStaff">Grades</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+<div class="button" style="position: absolute; top: 13%; left: 91.75%;" (click)="getAllLectures(); expandButtonPress()">
+    <input type="checkbox" id="expandAll">
+    <label for="expandAll" style=" word-wrap:break-word">Expand All</label>
+</div>
+
+<h3 style="position: absolute; top: 10%; left: 2%; color: #6ECCCA; font-weight: bold">My Courses</h3>
+<hr style="position: absolute; top: 15%; left: 2%; width: 8.8%; height: 0.28%; background-color: #4390BC; border: none">
+
+<clr-stack-view style="position: absolute; top: 17%; left: 2%; width: 96%">
+    <clr-stack-block *ngFor="let course of courses" [clrSbExpanded]="allExpanded" (click)="getAllLectures() ">
+        <clr-stack-label>{{course.code}}</clr-stack-label>
+        <clr-stack-content>{{course.name}}</clr-stack-content>
+        <clr-stack-block *ngFor="let lecture of lectureDict[course.code]">
+            <clr-stack-label>
+                <a class="nav-link" href="#" [routerLink]="['/ariviewer', course.code, lecture.urlName]" routerLinkActive="active">
+                    {{lecture.name}}
+                </a></clr-stack-label>
+        </clr-stack-block>
+    </clr-stack-block>
+
+    <button *ngIf="isStaff" class="btn btn-primary btn-block" (click)="showStaffModal()">Add Lecture</button>
+</clr-stack-view>
+
+<div *ngIf="viewStaffModal" class="modal">
+    <div class="modal-dialog" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Add a new lecture</h3>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <section class="form-block">
+                        <div class="form-group">
+                            <label for="courseSelect">Course</label>
+                            <div class="select">
+                                <select id="courseSelect" [(ngModel)]="model.course" [ngModelOptions]="{standalone: true}" #course="ngModel" required>
+                                    <option  *ngFor="let course of courses">{{course.code}}: {{course.name}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Lecture name</label>
+                            <input type="text" id="name" placeholder="Enter name of session here" size="45" [(ngModel)]="model.name" [ngModelOptions]="{standalone: true}" #name="ngModel" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="vidUrl">Another form field</label>
+                            <input type="text" id="vidUrl" placeholder="Copy video URL here" size="35" [(ngModel)]="model.video" [ngModelOptions]="{standalone: true}" #video="ngModel" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="pdfUrl">Another form field</label>
+                            <input type="text" id="pdfUrl" placeholder="Copy slides URL here" size="35" [(ngModel)]="model.slides" [ngModelOptions]="{standalone: true}" #slides="ngModel" required>
+                        </div>
+                        <button type="submit" class="btn btn-outline" (click)="hideStaffModal()" style="float: right">Cancel</button>
+                        <button type="submit" class="btn btn-success" (click)="addSession()" style="float: right">Submit</button>
+                    </section>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- not sure if this is actually meant to be here?
+<div *ngIf="showFeedback" class="modal">
+    <div class="modal-dialog" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Display feedback in this modal for user</h3>
+            </div>
+            <div class="modal-body">
+                <p>Click 'Ok' to return to the Grades page</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" type="button" (click)="hideFeedbackModal()">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+-->

@@ -1,0 +1,259 @@
+<div style="position: absolute; top: 0%; left: 0%; width: 100%">
+    <header class="header-6">
+        <div class="branding">
+            <a href="..." class="nav-link">
+                <img src="../../images/ARi_logo.png" style="position: absolute; width: 3.75%; height: 44%; left: 2%">
+            </a>
+        </div>
+        <div class="header-actions">
+            <clr-dropdown clrMenuPosition="bottom-right" style="position: absolute; right: 2%">
+                <button type="button" class="close" aria-label="Close" style="position: absolute; right: 2%" clrDropdownToggle>
+                    <span>
+                    <clr-icon shape="user" style="position: absolute; right:100%">  </clr-icon>
+                        {{ firstName }} {{ lastName }}  (arc13)
+                    </span>
+                    <clr-icon shape="caret down">  </clr-icon>
+                  </button>
+                <clr-dropdown-menu style="position: absolute; right: 4%" >
+                    <a href="#" [routerLink]="['../account']" routerLinkActive="active" clrDropdownItem>My Account</a>
+                    <a href="#" [routerLink]="['../settings']" routerLinkActive="active" clrDropdownItem>Settings</a>
+                    <a href="#" (click)="logout()" clrDropdownItem>Log out</a>
+                </clr-dropdown-menu>
+            </clr-dropdown>
+        </div>
+    </header>
+
+    <nav class="sub-nav" [clr-nav-level]="1">
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link" href="#" [routerLink]="['../home']" routerLinkActive="active">Dashboard</a>
+            </li>
+            <!--
+            <li class="nav-item">
+                <a class="nav-link" href="#" [routerLink]="['../cal']" routerLinkActive="active">Planner</a>
+            </li>
+            -->
+            <li class="nav-item">
+                <a class="nav-link" href="#" [routerLink]="['../askari']" routerLinkActive="active">Ask ARi</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" [routerLink]="['../courses']" routerLinkActive="active">Courses</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" [routerLink]="['../assignments']" routerLinkActive="active">Assignments</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" [routerLink]="['../grades']" routerLinkActive="active" *ngIf="!isStaff">Grades</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+<h3 style="position: absolute; top: 10%; left: 2%; color: #6ECCCA; font-weight: bold">My Assignments</h3>
+<hr style="position: absolute; top: 15%; left: 2%; width: 12.4%; height: 0.28%; background-color: #4390BC; border: none">
+
+<clr-datagrid style="position: absolute; top: 14.25%; left: 2%; width: 96%">
+    <clr-dg-column>Assignment</clr-dg-column>
+    <clr-dg-column>Set Date</clr-dg-column>
+    <clr-dg-column>Due Date</clr-dg-column>
+    <clr-dg-column>Submission</clr-dg-column>
+    <clr-dg-column>More Information</clr-dg-column>
+
+    <clr-dg-row>
+        <clr-dg-cell>War Of Life</clr-dg-cell>
+        <clr-dg-cell>16:00 <br> 31/01/17</clr-dg-cell>
+        <clr-dg-cell>19:00 <br> 01/03/17</clr-dg-cell>
+        <clr-dg-cell>
+            <div class="col-xs-4" align="center">
+                <form style="vertical-align: middle">
+                    <input type="button" class="btn btn-primary"
+                           style=" width:15vw; font-size:xx-small; line-height: 10px;"
+                           name="submission" value="Submit" align="center" (click)="showSubmissionModal()"/>
+                </form>
+            </div>
+        </clr-dg-cell>
+        <clr-dg-cell>
+            <div class="col-xs-4" align="center">
+                <form style="vertical-align: middle">
+                    <input type="button" class="btn btn-primary"
+                           style=" width:15vw; font-size:xx-small; line-height: 10px;"
+                           name="moreinfo" value="More Information" align="center" (click)="showMoreInfoModal()"/>
+                </form>
+            </div>
+        </clr-dg-cell>
+    </clr-dg-row>
+
+    <clr-dg-row>
+        <clr-dg-cell>CodeGenForFunctions</clr-dg-cell>
+        <clr-dg-cell>16:00 <br> 31/01/17</clr-dg-cell>
+        <clr-dg-cell>19:00 <br> 01/03/17</clr-dg-cell>
+        <clr-dg-cell>
+            <div class="col-xs-4" align="center">
+                <form style="vertical-align: middle">
+                    <input type="button" class="btn btn-primary"
+                           style=" width:15vw; font-size:xx-small; line-height: 10px;"
+                           name="submission" value="Submit" align="center" (click)="showSubmissionModal()"/>
+                </form>
+            </div>
+        </clr-dg-cell>
+        <clr-dg-cell>
+            <div class="col-xs-4" align="center">
+                <form style="vertical-align: middle">
+                    <input type="button" class="btn btn-primary"
+                           style=" width:15vw; font-size:xx-small; line-height: 10px;"
+                           name="moreinfo" value="More Information" align="center" (click)="showMoreInfoModal()"/>
+                </form>
+            </div>
+        </clr-dg-cell>
+    </clr-dg-row>
+
+    <clr-dg-row>
+        <clr-dg-cell>C++ Enigma</clr-dg-cell>
+        <clr-dg-cell>16:00 <br> 31/01/17</clr-dg-cell>
+        <clr-dg-cell>19:00 <br> 01/03/17</clr-dg-cell>
+        <clr-dg-cell>
+            <div class="col-xs-4" align="center">
+                <form style="vertical-align: middle">
+                    <input type="button" class="btn btn-primary"
+                           style=" width:15vw; font-size:xx-small; line-height: 10px;"
+                           name="submission" value="Submit" align="center" (click)="showSubmissionModal()"/>
+                </form>
+            </div>
+        </clr-dg-cell>
+        <clr-dg-cell>
+            <div class="col-xs-4" align="center">
+                <form style="vertical-align: middle">
+                    <input type="button" class="btn btn-primary"
+                           style=" width:15vw; font-size:xx-small; line-height: 10px;"
+                           name="moreinfo" value="More Information" align="center" (click)="showMoreInfoModal()"/>
+                </form>
+            </div>
+        </clr-dg-cell>
+    </clr-dg-row>
+
+    <clr-dg-row>
+        <clr-dg-cell>Coaster Coursework</clr-dg-cell>
+        <clr-dg-cell>16:00 <br> 31/01/17</clr-dg-cell>
+        <clr-dg-cell>19:00 <br> 01/03/17</clr-dg-cell>
+        <clr-dg-cell>
+            Submission Timestamp: 05/12/16 12:25:29
+        </clr-dg-cell>
+        <clr-dg-cell>
+            <div class="col-xs-4" align="center">
+                <form style="vertical-align: middle">
+                    <input type="button" class="btn btn-primary"
+                           style=" width:15vw; font-size:xx-small; line-height: 10px;"
+                           name="moreinfo" value="More Information" align="center" (click)="showMoreInfoModal()"/>
+                </form>
+            </div>
+        </clr-dg-cell>
+    </clr-dg-row>
+
+    <clr-dg-row>
+        <clr-dg-cell>Statistics Coursework</clr-dg-cell>
+        <clr-dg-cell>16:00 <br> 31/01/17</clr-dg-cell>
+        <clr-dg-cell>19:00 <br> 01/03/17</clr-dg-cell>
+        <clr-dg-cell>
+            Submission Timestamp: 30/11/16 10:34:26
+        </clr-dg-cell>
+        <clr-dg-cell>
+            <div class="col-xs-4" align="center">
+                <form style="vertical-align: middle">
+                    <input type="button" class="btn btn-primary"
+                           style=" width:15vw; font-size:xx-small; line-height: 10px;"
+                           name="moreinfo" value="More Information" align="center" (click)="showMoreInfoModal()"/>
+                </form>
+            </div>
+        </clr-dg-cell>
+    </clr-dg-row>
+
+    <clr-dg-row>
+        <clr-dg-cell>Transforms Coursework</clr-dg-cell>
+        <clr-dg-cell>16:00 <br> 31/01/17</clr-dg-cell>
+        <clr-dg-cell>19:00 <br> 01/03/17</clr-dg-cell>
+        <clr-dg-cell>
+            Submission Timestamp: 15/11/16 17:12:59
+        </clr-dg-cell>
+        <clr-dg-cell>
+            <div class="col-xs-4" align="center">
+                <form style="vertical-align: middle">
+                    <input type="button" class="btn btn-primary"
+                           style=" width:15vw; font-size:xx-small; line-height: 10px;"
+                           name="moreinfo" value="More Information" align="center" (click)="showMoreInfoModal()"/>
+                </form>
+            </div>
+        </clr-dg-cell>
+    </clr-dg-row>
+</clr-datagrid>
+
+<div *ngIf="showSubmission" class="modal">
+    <div class="modal-dialog" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Submission</h3>
+            </div>
+            <div class="modal-body">
+                <p>I declare that this final submitted version is my unaided work.</p>
+                <p>I acknowledge the following people for help through our discussions:</p>
+
+                <form>
+                    <section class="form-block">
+                        <div class="form-group row">
+                            <div class="col-lg-10 col-md-12 col-sm-12 col-xs-12">
+                                <textarea id="gForm_4" rows="5" class="form-control"></textarea>
+                            </div>
+                        </div>
+                    </section>
+                </form>
+            </div>
+
+            <clr-datagrid>
+                <clr-dg-column>Basename</clr-dg-column>
+                <clr-dg-column>Allowed suffix(es)</clr-dg-column>
+                <clr-dg-column>Max size allowed</clr-dg-column>
+                <clr-dg-column>File</clr-dg-column>
+
+                <clr-dg-row>
+                    <clr-dg-cell>waroflife</clr-dg-cell>
+                    <clr-dg-cell>pdf</clr-dg-cell>
+                    <clr-dg-cell>10Mb</clr-dg-cell>
+                    <clr-dg-cell>
+                        <form action="">
+                            <input type="submit" value="Choose file">
+                        </form>
+                    </clr-dg-cell>
+                </clr-dg-row>
+            </clr-datagrid>
+
+            <!--
+            <div class="progress flash progress-fade">
+                <progress max="100" value="0" data-displayval="0%"></progress>
+            </div>
+            -->
+
+            <div class="modal-footer">
+                <button [clrLoading]="submitLoading" type="submit" class="btn btn-success-outline" (click)="submit()">Submit</button>
+                <button class="btn btn-primary" type="button" (click)="hideSubmissionModal()">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="showMoreInfo" class="modal">
+    <div class="modal-dialog" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">More Information</h3>
+            </div>
+            <div class="modal-body">
+                <p>Type: Coursework</p>
+                <p>Set by: David Ham</p>
+                <p>Assessment: Individual</p>
+                <p>Submission Type: Electronic</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" type="button" (click)="hideMoreInfoModal()">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>

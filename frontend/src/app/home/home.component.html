@@ -1,0 +1,399 @@
+<div style="position: absolute; top: 0%; left: 0%; width: 100%">
+    <header class="header-6">
+        <div class="branding">
+            <a href="..." class="nav-link">
+                <img src="../../images/ARi_logo.png" style="position: absolute; width: 3.75%; height: 44%; left: 2%">
+            </a>
+        </div>
+        <div class="header-actions">
+            <clr-dropdown clrMenuPosition="bottom-right" style="position: absolute; right: 2%">
+                <button type="button" class="close" aria-label="Close" style="position: absolute; right: 2%" clrDropdownToggle>
+                    <span>
+                    <clr-icon shape="user" style="position: absolute; right:100%">  </clr-icon>
+                        {{ firstName }} {{ lastName }}  (arc13)
+                    </span>
+                    <clr-icon shape="caret down">  </clr-icon>
+                  </button>
+                <clr-dropdown-menu style="position: absolute; right: 4%" >
+                    <a href="#" [routerLink]="['../account']" routerLinkActive="active" clrDropdownItem>My Account</a>
+                    <a href="#" [routerLink]="['../settings']" routerLinkActive="active" clrDropdownItem>Settings</a>
+                    <a href="#" (click)="logout()" clrDropdownItem>Log out</a>
+                </clr-dropdown-menu>
+            </clr-dropdown>
+        </div>
+    </header>
+
+    <nav class="sub-nav" [clr-nav-level]="1">
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link" href="#" [routerLink]="['../home']" routerLinkActive="active">Dashboard</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" [routerLink]="['../askari']" routerLinkActive="active">Ask ARi</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" [routerLink]="['../courses']" routerLinkActive="active">Courses</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" [routerLink]="['../assignments']" routerLinkActive="active">Assignments</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" [routerLink]="['../grades']" routerLinkActive="active" *ngIf="!isStaff">Grades</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+<div style="position: absolute; top: 14%; left: 2%; width: 31%; height: 43%; background-color: #6ECCCA; text-align: center; color: white; font-weight: bold; font-size: 72px;">
+    <br><br><br>Welcome<br><br><br><br>
+    Back<br><br><br><br>
+    {{firstName}}
+</div>
+
+<h3 style="position: absolute; top: 10%; left: 71%; color: #49AFD9; font-weight: bold">Notifications</h3>
+<hr style="position: absolute; top: 15%; left: 71%; width: 9.63%; height: 0.28%; background-color: #4390BC; border: none">
+
+<div style="position: absolute; top: 16.3%; left: 71%; width: 98%">
+    <!--
+    <div class="alert alert-info" style="width: 27%">
+        <button type="button" class="close" aria-label="Close">
+            <clr-icon aria-hidden="true" shape="tasks"></clr-icon>
+        </button>
+
+        <div class="alert-item">
+        <span class="alert-text">
+            Grade Released
+        </span>
+        </div>
+    </div>
+    -->
+    <div class="alert alert-success" style="width: 27%; background-color: #49AFD9; border-color: #49AFD9; color: white">
+        <clr-icon shape="tasks" style="position: absolute; top: 25%"></clr-icon>
+
+        <div class="alert-item">
+        <span>
+            Grade Released
+        </span>
+        </div>
+
+        <button type="button" class="close" aria-label="Close">
+            <clr-icon aria-hidden="true" shape="close"></clr-icon>
+        </button>
+    </div>
+
+    <div class="alert alert-success" style="width: 27%; background-color: #49AFD9; border-color: #49AFD9; color: white">
+        <clr-icon shape="note" style="position: absolute; top: 25%"></clr-icon>
+
+        <div class="alert-item">
+        <span>
+            New Assignment Available
+        </span>
+        </div>
+
+        <button type="button" class="close" aria-label="Close">
+            <clr-icon aria-hidden="true" shape="close"></clr-icon>
+        </button>
+    </div>
+
+    <div class="alert alert-success" style="width: 27%; background-color: #49AFD9; border-color: #49AFD9; color: white">
+        <clr-icon shape="tasks" style="position: absolute; top: 25%"></clr-icon>
+
+        <div class="alert-item">
+        <span>
+            Grade Released
+        </span>
+        </div>
+
+        <button type="button" class="close" aria-label="Close">
+            <clr-icon aria-hidden="true" shape="close"></clr-icon>
+        </button>
+    </div>
+
+    <div class="alert alert-success" style="width: 27%; background-color: #49AFD9; border-color: #49AFD9; color: white">
+        <clr-icon shape="talk-bubbles" style="position: absolute; top: 25%"></clr-icon>
+
+        <div class="alert-item">
+        <span>
+            Response to your Ask ARi Question
+        </span>
+        </div>
+
+        <button type="button" class="close" aria-label="Close">
+            <clr-icon aria-hidden="true" shape="close"></clr-icon>
+        </button>
+    </div>
+
+    <div class="alert alert-success" style="width: 27%; background-color: #49AFD9; border-color: #49AFD9; color: white">
+        <clr-icon shape="upload-cloud" style="position: absolute; top: 25%"></clr-icon>
+
+        <div class="alert-item">
+        <span>
+            Assignment Submission Successful
+        </span>
+        </div>
+
+        <button type="button" class="close" aria-label="Close">
+            <clr-icon aria-hidden="true" shape="close"></clr-icon>
+        </button>
+    </div>
+
+    <div class="alert alert-success" style="width: 27%; background-color: #49AFD9; border-color: #49AFD9; color: white">
+        <clr-icon shape="times-circle" style="position: absolute; top: 25%"></clr-icon>
+
+        <div class="alert-item">
+        <span>
+            Assignment Submission Failed
+        </span>
+        </div>
+
+        <button type="button" class="close" aria-label="Close">
+            <clr-icon aria-hidden="true" shape="close"></clr-icon>
+        </button>
+    </div>
+
+    <div class="alert alert-success" style="width: 27%; background-color: #49AFD9; border-color: #49AFD9; color: white">
+        <clr-icon shape="clock" style="position: absolute; top: 25%"></clr-icon>
+
+        <div class="alert-item">
+        <span>
+            Upcoming Deadline
+        </span>
+        </div>
+
+        <button type="button" class="close" aria-label="Close">
+            <clr-icon aria-hidden="true" shape="close"></clr-icon>
+        </button>
+    </div>
+
+    <div class="alert alert-success" style="width: 27%; background-color: #49AFD9; border-color: #49AFD9; color: white">
+        <clr-icon shape="note" style="position: absolute; top: 25%"></clr-icon>
+
+        <div class="alert-item">
+        <span>
+            New Assignment Available
+        </span>
+        </div>
+
+        <button type="button" class="close" aria-label="Close">
+            <clr-icon aria-hidden="true" shape="close"></clr-icon>
+        </button>
+    </div>
+
+    <div class="alert alert-success" style="width: 27%; background-color: #49AFD9; border-color: #49AFD9; color: white">
+        <clr-icon shape="talk-bubbles" style="position: absolute; top: 25%"></clr-icon>
+
+        <div class="alert-item">
+        <span>
+            Response to your Ask ARi Question
+        </span>
+        </div>
+
+        <button type="button" class="close" aria-label="Close">
+            <clr-icon aria-hidden="true" shape="close"></clr-icon>
+        </button>
+    </div>
+
+    <div class="alert alert-success" style="width: 27%; background-color: #49AFD9; border-color: #49AFD9; color: white">
+        <clr-icon shape="upload-cloud" style="position: absolute; top: 25%"></clr-icon>
+
+        <div class="alert-item">
+        <span>
+            Assignment Submission Successful
+        </span>
+        </div>
+
+        <button type="button" class="close" aria-label="Close">
+            <clr-icon aria-hidden="true" shape="close"></clr-icon>
+        </button>
+    </div>
+
+    <div class="alert alert-success" style="width: 27%; background-color: #49AFD9; border-color: #49AFD9; color: white">
+        <clr-icon shape="clock" style="position: absolute; top: 25%"></clr-icon>
+
+        <div class="alert-item">
+        <span>
+            Upcoming Deadline
+        </span>
+        </div>
+
+        <button type="button" class="close" aria-label="Close">
+            <clr-icon aria-hidden="true" shape="close"></clr-icon>
+        </button>
+    </div>
+
+    <div class="alert alert-success" style="width: 27%; background-color: #49AFD9; border-color: #49AFD9; color: white">
+        <clr-icon shape="note" style="position: absolute; top: 25%"></clr-icon>
+
+        <div class="alert-item">
+        <span>
+            New Assignment Available
+        </span>
+        </div>
+
+        <button type="button" class="close" aria-label="Close">
+            <clr-icon aria-hidden="true" shape="close"></clr-icon>
+        </button>
+    </div>
+
+    <div class="alert alert-success" style="width: 27%; background-color: #49AFD9; border-color: #49AFD9; color: white">
+        <clr-icon shape="upload-cloud" style="position: absolute; top: 25%"></clr-icon>
+
+        <div class="alert-item">
+        <span>
+            Assignment Submission Successful
+        </span>
+        </div>
+
+        <button type="button" class="close" aria-label="Close">
+            <clr-icon aria-hidden="true" shape="close"></clr-icon>
+        </button>
+    </div>
+
+    <div class="alert alert-success" style="width: 27%; background-color: #49AFD9; border-color: #49AFD9; color: white">
+        <clr-icon shape="talk-bubbles" style="position: absolute; top: 25%"></clr-icon>
+
+        <div class="alert-item">
+        <span>
+            Response to your Ask ARi Question
+        </span>
+        </div>
+
+        <button type="button" class="close" aria-label="Close">
+            <clr-icon aria-hidden="true" shape="close"></clr-icon>
+        </button>
+    </div>
+
+    <div class="alert alert-success" style="width: 27%; background-color: #49AFD9; border-color: #49AFD9; color: white">
+        <clr-icon shape="note" style="position: absolute; top: 25%"></clr-icon>
+
+        <div class="alert-item">
+        <span>
+            New Assignment Available
+        </span>
+        </div>
+
+        <button type="button" class="close" aria-label="Close">
+            <clr-icon aria-hidden="true" shape="close"></clr-icon>
+        </button>
+    </div>
+
+    <div class="alert alert-success" style="width: 27%; background-color: #49AFD9; border-color: #49AFD9; color: white">
+        <clr-icon shape="talk-bubbles" style="position: absolute; top: 25%"></clr-icon>
+
+        <div class="alert-item">
+        <span>
+            Response to your Ask ARi Question
+        </span>
+        </div>
+
+        <button type="button" class="close" aria-label="Close">
+            <clr-icon aria-hidden="true" shape="close"></clr-icon>
+        </button>
+    </div>
+</div>
+
+<!--
+<h3 style="position: absolute; top: 10%; left: 33%; color: #6ECCCA; font-weight: bold">TODO List</h3>
+
+<div class="row" style="position: absolute; top: 14.3%; left: 33%; width: 60%">
+    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+        <div class="card">
+            <div class="card-block" style="background-color: transparent">
+                <ul class="list">
+                    <clr-checkbox>Sign up for Horizons</clr-checkbox>
+                    <clr-checkbox>Form a group for WebApps</clr-checkbox>
+                    <clr-checkbox>Buy new pens</clr-checkbox>
+                    <clr-checkbox>Buy flight tickets</clr-checkbox>
+                    <clr-checkbox>Finish Q2 of the Statistics coursework</clr-checkbox>
+                    <clr-checkbox>Call agency for house viewing</clr-checkbox>
+                    <clr-checkbox>Ask John about deployment</clr-checkbox>
+                    <clr-checkbox>Finish Q4 of the CodeGen coursework</clr-checkbox>
+                    <clr-checkbox>Read page 64 of the manual</clr-checkbox>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+-->
+
+<h3 style="position: absolute; top: 10%; left: 35.25%; color: #89D6E2; font-weight: bold">Your Day</h3>
+<hr style="position: absolute; top: 15%; left: 35.25%; width: 7%; height: 0.28%; background-color: #4390BC; border: none">
+
+<clr-datagrid style="position: absolute; top: 14.3%; left: 35.25%; width: 33.25%">
+    <clr-dg-column style="background-color: #89D6E2">
+        <div style="color: white;">TIME OF DAY </div>
+    </clr-dg-column>
+    <clr-dg-column style="background-color: #89D6E2">
+        <div style="color: white;">ACTIVITY</div>
+    </clr-dg-column>
+
+    <clr-dg-row>
+        <clr-dg-cell>08:00 - 10:00</clr-dg-cell>
+        <clr-dg-cell>Morning Run</clr-dg-cell>
+    </clr-dg-row>
+
+    <clr-dg-row>
+        <clr-dg-cell>10:00 - 12:00</clr-dg-cell>
+        <clr-dg-cell>Compilers Lecture</clr-dg-cell>
+    </clr-dg-row>
+
+    <clr-dg-row>
+        <clr-dg-cell>13:00 - 15:00</clr-dg-cell>
+        <clr-dg-cell>WebApps Group Meeting</clr-dg-cell>
+    </clr-dg-row>
+
+    <clr-dg-row>
+        <clr-dg-cell>15:00 - 16:00</clr-dg-cell>
+        <clr-dg-cell>Algorithms Lecture</clr-dg-cell>
+    </clr-dg-row>
+
+    <clr-dg-row>
+        <clr-dg-cell>16:00 - 17:00</clr-dg-cell>
+        <clr-dg-cell>Rowing Practice</clr-dg-cell>
+    </clr-dg-row>
+
+    <clr-dg-row>
+        <clr-dg-cell>17:00 - 18:00</clr-dg-cell>
+        <clr-dg-cell>Operating Systems Revision</clr-dg-cell>
+    </clr-dg-row>
+
+    <clr-dg-row>
+        <clr-dg-cell>19:00 - 21:00</clr-dg-cell>
+        <clr-dg-cell>Group Revision Skype Session</clr-dg-cell>
+    </clr-dg-row>
+
+    <clr-dg-row>
+        <clr-dg-cell>21:00 - 22:00</clr-dg-cell>
+        <clr-dg-cell>Learn Spanish</clr-dg-cell>
+    </clr-dg-row>
+
+    <clr-dg-row>
+        <clr-dg-cell>22:00 - 23:00</clr-dg-cell>
+        <clr-dg-cell>Skype John</clr-dg-cell>
+    </clr-dg-row>
+</clr-datagrid>
+
+<h3 style="position: absolute; top: 59.7%; left: 2.5%; color: #57CAE5; font-weight: bold">Latest Questions from Ask ARi</h3>
+<hr style="position: absolute; top: 64.75%; left: 2.5%; width: 23%; height: 0.28%; background-color: #4390BC; border: none">
+
+<clr-datagrid style="position: absolute; top: 64.7%; left: 2.5%; width: 66%">
+    <clr-dg-column style="background-color: #57CAE5">
+        <div style="color: white;">
+            QUESTION TITLE
+        </div>
+    </clr-dg-column>
+    <clr-dg-column style="background-color: #57CAE5">
+        <div style="color: white;">
+            POSTED IN
+        </div>
+    </clr-dg-column>
+
+    <clr-dg-row *ngFor="let question of questions | slice:0:5">
+        <clr-dg-cell style="background-color: white; font-style: italic" [routerLink]="['/askari', { qTitle: question.title }]" routerLinkActive="active">{{question.title}}</clr-dg-cell>
+        <clr-dg-cell style="background-color: white">{{question.course}}: {{question.lectureTitle}}</clr-dg-cell>
+    </clr-dg-row>
+
+    <clr-dg-footer style="background-color: #57CAE5">
+        <a href="#" [routerLink]="['/askari']" routerLinkActive="active" style="color: white; font-weight: bold">Go to Ask ARi</a>
+    </clr-dg-footer>
+</clr-datagrid>

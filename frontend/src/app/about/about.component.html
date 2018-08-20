@@ -1,0 +1,58 @@
+<!--
+  ~ Copyright (c) 2016 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+<div style="position: absolute; top: 0%; left: 0%; width: 100%">
+    <header class="header-6">
+        <div class="branding">
+            <a href="..." class="nav-link">
+                <img src="../../images/ARi_logo.png" style="position: absolute; width: 3.75%; height: 44%; left: 2%">
+            </a>
+        </div>
+        <div class="header-actions">
+            <clr-dropdown clrMenuPosition="bottom-right" style="position: absolute; right: 2%">
+                <button type="button" class="close" aria-label="Close" style="position: absolute; right: 2%" clrDropdownToggle>
+                    <span>
+                    <clr-icon shape="user" style="position: absolute; right:100%">  </clr-icon>
+                        {{ firstName }} {{ lastName }}  (arc13)
+                    </span>
+                    <clr-icon shape="caret down">  </clr-icon>
+                  </button>
+                <clr-dropdown-menu style="position: absolute; right: 4%" >
+                    <a href="#" [routerLink]="['../account']" routerLinkActive="active" clrDropdownItem>My Account</a>
+                    <a href="#" [routerLink]="['../settings']" routerLinkActive="active" clrDropdownItem>Settings</a>
+                    <a href="#" (click)="logout()" clrDropdownItem>Log out</a>
+                </clr-dropdown-menu>
+            </clr-dropdown>
+        </div>
+    </header>
+
+    <nav class="sub-nav" [clr-nav-level]="1">
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link" href="#" [routerLink]="['../home']" routerLinkActive="active">Dashboard</a>
+            </li>
+            <!--
+            <li class="nav-item">
+                <a class="nav-link" href="#" [routerLink]="['../cal']" routerLinkActive="active">Planner</a>
+            </li>
+            -->
+            <li class="nav-item">
+                <a class="nav-link" href="#" [routerLink]="['../askari']" routerLinkActive="active">Ask ARi</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" [routerLink]="['../courses']" routerLinkActive="active">Courses</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" [routerLink]="['../assignments']" routerLinkActive="active">Assignments</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" [routerLink]="['../grades']" routerLinkActive="active" *ngIf="!isStaff">Grades</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+<ul>
+    <li *ngFor="let event of events">{{ event.title }}</li>
+</ul>

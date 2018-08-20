@@ -1,0 +1,63 @@
+.sidenav {
+    background-color: #CDE3EE;
+    position: absolute;
+    top: 2.75%;
+    left: 0%;
+    height: 78%;
+}
+
+.clr-icon {
+    &.clr-clarity-logo {
+        background-image: url(../../images/ARi_logo.png);
+    }
+}
+
+.header-6 {
+    background-image: url(../../images/header2.png);
+}
+
+.form-container {
+    display:block;
+    width:90%;
+    padding:2em;
+    margin: 2em auto;
+}
+
+.alert {
+    background: #f2edda;
+    padding: 7px;
+    font-size: .9em;
+    margin-bottom: 20px;
+    display: inline-block;
+    animation: 2s alertAnim forwards;
+}
+
+.button {
+    margin-top: 3rem;
+}
+h1 {
+    margin-bottom: 2rem;
+    font-weight:bold;
+    font-family:'Muli';
+    font-size: 2em;
+}
+
+
+@keyframes alertAnim {
+    from {
+        opacity:0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity:1;
+        transform: translateY(0);
+    }
+}
+
+.textarea{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+
+    width: 100%;
+}

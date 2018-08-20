@@ -1,0 +1,75 @@
+.clr-icon {
+    &.clr-clarity-logo {
+        background-image: url(../../images/ARi_logo.png);
+    }
+}
+
+.header-6 {
+    background-image: url(../../images/header2.png);
+}
+
+.ariviewer-video {
+    position: absolute;
+    top: 23%;
+    left: 3%;
+    right: 1em;
+    bottom: 1em;
+}
+
+.ariviewer-video iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 0;
+    height: 80%;
+    width: 67%;
+}
+
+.ariviewer-video-header {
+    position: absolute;
+    top: 15%;
+    left: 3%;
+    right: 1em;
+    bottom: 1em;
+}
+
+.ariviewer-slides {
+    position: absolute;
+    top: 23%;
+    left: 70%;
+    right: 1em;
+    bottom: 1em;
+}
+
+.ariviewer-slides iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 0;
+    height: 80%;
+    width: 96%;
+}
+
+.ariviewer-slides-header {
+    position: absolute;
+    top: 15%;
+    left: 70%;
+    right: 1em;
+    bottom: 1em;
+}
+
+.ariviewer-notes {
+    position: absolute;
+    top: 85%;
+    left: 3%;
+    right: 1em;
+    bottom: 1em;
+}
+
+.ariviewer-notes-2 {
+    position: absolute;
+    top: 22%;
+    left: 3%;
+    right: 1em;
+    bottom: 1em;
+}

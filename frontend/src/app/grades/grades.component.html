@@ -1,0 +1,1160 @@
+<div style="position: absolute; top: 0%; left: 0%; width: 100%">
+    <header class="header-6">
+        <div class="branding">
+            <a href="..." class="nav-link">
+                <img src="../../images/ARi_logo.png" style="position: absolute; width: 3.75%; height: 44%; left: 2%">
+            </a>
+        </div>
+        <div class="header-actions">
+            <clr-dropdown clrMenuPosition="bottom-right" style="position: absolute; right: 2%">
+                <button type="button" class="close" aria-label="Close" style="position: absolute; right: 2%" clrDropdownToggle>
+                    <span>
+                    <clr-icon shape="user" style="position: absolute; right:100%">  </clr-icon>
+                        {{ firstName }} {{ lastName }}  (arc13)
+                    </span>
+                    <clr-icon shape="caret down">  </clr-icon>
+                  </button>
+                <clr-dropdown-menu style="position: absolute; right: 4%" >
+                    <a href="#" [routerLink]="['../account']" routerLinkActive="active" clrDropdownItem>My Account</a>
+                    <a href="#" [routerLink]="['../settings']" routerLinkActive="active" clrDropdownItem>Settings</a>
+                    <a href="#" (click)="logout()" clrDropdownItem>Log out</a>
+                </clr-dropdown-menu>
+            </clr-dropdown>
+        </div>
+    </header>
+
+    <nav class="sub-nav" [clr-nav-level]="1">
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link" href="#" [routerLink]="['../home']" routerLinkActive="active">Dashboard</a>
+            </li>
+            <!--
+            <li class="nav-item">
+                <a class="nav-link" href="#" [routerLink]="['../cal']" routerLinkActive="active">Planner</a>
+            </li>
+            -->
+            <li class="nav-item">
+                <a class="nav-link" href="#" [routerLink]="['../askari']" routerLinkActive="active">Ask ARi</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" [routerLink]="['../courses']" routerLinkActive="active">Courses</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" [routerLink]="['../assignments']" routerLinkActive="active">Assignments</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" [routerLink]="['../grades']" routerLinkActive="active">Grades</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+<div class="button" style="position: absolute; top: 13%; left: 91.75%;" (click)="expandButtonPress()">
+    <input type="checkbox" id="expandAll">
+    <label for="expandAll" style=" word-wrap:break-word">Expand All</label>
+</div>
+
+<h3 style="position: absolute; top: 10%; left: 2%; color: #6ECCCA; font-weight: bold">My Grades</h3>
+<hr style="position: absolute; top: 15%; left: 2%; width: 8.1%; height: 0.28%; background-color: #4390BC; border: none">
+
+<clr-stack-view style="position: absolute; top: 17%; left: 2%; width: 96%">
+    <clr-stack-block [clrSbExpanded]="allExpanded">
+        <clr-stack-label>C202</clr-stack-label>
+        <clr-stack-content>Software Engineering - Algorithms</clr-stack-content>
+
+        <clr-stack-block>
+            <clr-stack-label>Coursework 1</clr-stack-label>
+            <clr-stack-content>
+                <div class="row" width="100vw">
+                    <div class="col-xs-2" align="left">
+                        <b>98% (A*)</b>
+                    </div>
+
+                    <div class="col-xs-3" align="center">
+                        Submission Timestamp: 12/10/16 13:36:33
+                    </div>
+
+                    <div class="col-xs-3" align="center">
+                        <a href="http://www.imperial.ac.uk/people/b.glocker" target="_blank">Ben Glocker</a>
+                    </div>
+
+                    <div class="col-xs-4" align="center">
+                        <form style="vertical-align: top">
+                            <input type="button" class="btn btn-primary"
+                                   style=" width:15vw; font-size:xx-small; line-height: 10px"
+                                   name="feedback" value="Feedback" align="center" (click)="showFeedbackModal()"/>
+                        </form>
+                    </div>
+                </div>
+            </clr-stack-content>
+        </clr-stack-block>
+
+        <clr-stack-block>
+            <clr-stack-label>Coursework 2</clr-stack-label>
+            <clr-stack-content>
+                <div class="row" width="100vw">
+                    <div class="col-xs-2" align="left">
+                        <b>88% (A+)</b>
+                    </div>
+
+                    <div class="col-xs-3" align="center">
+                        Submission Timestamp: 09/03/17 14:21:43
+                    </div>
+
+                    <div class="col-xs-3" align="center">
+                        <a href="http://www.imperial.ac.uk/people/b.glocker" target="_blank">Ben Glocker</a>
+                    </div>
+
+                    <div class="col-xs-4" align="center">
+                        Collect at SAO
+                    </div>
+                </div>
+            </clr-stack-content>
+        </clr-stack-block>
+    </clr-stack-block>
+
+    <clr-stack-block [clrSbExpanded]="allExpanded">
+        <clr-stack-label>C211</clr-stack-label>
+        <clr-stack-content>Operating Systems</clr-stack-content>
+
+        <clr-stack-block>
+            <clr-stack-label>Pintos - Task 0 Design Mark</clr-stack-label>
+            <clr-stack-content>
+                <div class="row" width="100vw">
+                    <div class="col-xs-2" align="left">
+                        <b>92% (A*)</b>
+                    </div>
+
+                    <div class="col-xs-3" align="center">
+                        Submission Timestamp: 16/01/17 17:30:46
+                    </div>
+
+                    <div class="col-xs-3" align="center">
+                        <a href="https://www.doc.ic.ac.uk/~mjw03/PersonalWebpage/home.html" target="_blank">Mark Wheelhouse</a>
+                    </div>
+
+                    <div class="col-xs-4" align="center">
+                        <form style="vertical-align: middle">
+                            <input type="button" class="btn btn-primary"
+                                   style=" width:15vw; font-size:xx-small; line-height: 10px;"
+                                   name="feedback" value="Feedback" align="center" (click)="showFeedbackModal()"/>
+                        </form>
+                    </div>
+                </div>
+            </clr-stack-content>
+        </clr-stack-block>
+
+        <clr-stack-block>
+            <clr-stack-label>Pintos - Task 1 Design Mark</clr-stack-label>
+            <clr-stack-content>
+                <div class="row" width="100vw">
+                    <div class="col-xs-2" align="left">
+                        <b>94% (A*)</b>
+                    </div>
+
+                    <div class="col-xs-3" align="center">
+                        Submission Timestamp: 06/02/17 14:32:31
+                    </div>
+
+                    <div class="col-xs-3" align="center">
+                        <a href="https://www.doc.ic.ac.uk/~mjw03/PersonalWebpage/home.html" target="_blank">Mark Wheelhouse</a>
+                    </div>
+
+                    <div class="col-xs-4" align="center">
+                        <form style="vertical-align: middle">
+                            <input type="button" class="btn btn-primary"
+                                   style=" width:15vw; font-size:xx-small; line-height: 10px;"
+                                   name="feedback" value="Feedback" align="center" (click)="showFeedbackModal()"/>
+                        </form>
+                    </div>
+                </div>
+            </clr-stack-content>
+        </clr-stack-block>
+
+        <clr-stack-block>
+            <clr-stack-label>Pintos - Task 2 Design Mark</clr-stack-label>
+            <clr-stack-content>
+                <div class="row" width="100vw">
+                    <div class="col-xs-2" align="left">
+                        <b>96% (A*)</b>
+                    </div>
+
+                    <div class="col-xs-3" align="center">
+                        Submission Timestamp: 27/02/17 12:52:21
+                    </div>
+
+                    <div class="col-xs-3" align="center">
+                        <a href="https://www.doc.ic.ac.uk/~mjw03/PersonalWebpage/home.html" target="_blank">Mark Wheelhouse</a>
+                    </div>
+
+                    <div class="col-xs-4" align="center">
+                        <form style="vertical-align: middle">
+                            <input type="button" class="btn btn-primary"
+                                   style=" width:15vw; font-size:xx-small; line-height: 10px;"
+                                   name="feedback" value="Feedback" align="center" (click)="showFeedbackModal()"/>
+                        </form>
+                    </div>
+                </div>
+            </clr-stack-content>
+        </clr-stack-block>
+
+        <clr-stack-block>
+            <clr-stack-label>Pintos - Task 3 Design Mark</clr-stack-label>
+            <clr-stack-content>
+                <div class="row" width="100vw">
+                    <div class="col-xs-2" align="left">
+                        <b>88% (A+)</b>
+                    </div>
+
+                    <div class="col-xs-3" align="center">
+                        Submission Timestamp: 20/03/17 10:43:18
+                    </div>
+
+                    <div class="col-xs-3" align="center">
+                        <a href="https://www.doc.ic.ac.uk/~mjw03/PersonalWebpage/home.html" target="_blank">Mark Wheelhouse</a>
+                    </div>
+
+                    <div class="col-xs-4" align="center">
+                        <form style="vertical-align: middle">
+                            <input type="button" class="btn btn-primary"
+                                   style=" width:15vw; font-size:xx-small; line-height: 10px;"
+                                   name="feedback" value="Feedback" align="center" (click)="showFeedbackModal()"/>
+                        </form>
+                    </div>
+                </div>
+            </clr-stack-content>
+        </clr-stack-block>
+    </clr-stack-block>
+
+    <clr-stack-block [clrSbExpanded]="allExpanded">
+        <clr-stack-label>C212</clr-stack-label>
+        <clr-stack-content>Networks and Communications</clr-stack-content>
+
+        <clr-stack-block>
+            <clr-stack-label>CW</clr-stack-label>
+            <clr-stack-content>
+                <div class="row" width="100vw">
+                    <div class="col-xs-2" align="left">
+                        <b>96% (A*)</b>
+                    </div>
+
+                    <div class="col-xs-3" align="center">
+                        Submission Timestamp: 22/02/17 14:37:02
+                    </div>
+
+                    <div class="col-xs-3" align="center">
+                        <a href="http://www.imperial.ac.uk/people/k.gkoutzis" target="_blank">Konstantinos Gkoutzis</a>
+                    </div>
+
+                    <div class="col-xs-4" align="center">
+                        Collect at SAO
+                    </div>
+                </div>
+            </clr-stack-content>
+        </clr-stack-block>
+    </clr-stack-block>
+
+    <clr-stack-block [clrSbExpanded]="allExpanded">
+        <clr-stack-label>C220</clr-stack-label>
+        <clr-stack-content>Software Engineering Design</clr-stack-content>
+
+        <clr-stack-block>
+            <clr-stack-label>Tut 1</clr-stack-label>
+            <clr-stack-content>
+                <div class="row" width="100vw">
+                    <div class="col-xs-2" align="left">
+                        <b>97% (A*)</b>
+                    </div>
+
+                    <div class="col-xs-3" align="center">
+                        Submission Timestamp: 12/10/16 14:30:46
+                    </div>
+
+                    <div class="col-xs-3" align="center">
+                        <a href="https://www.doc.ic.ac.uk/~rbc/" target="_blank">Robert Chatley</a>
+                    </div>
+
+                    <div class="col-xs-4" align="center">
+                        Collect at SAO
+                    </div>
+                </div>
+            </clr-stack-content>
+        </clr-stack-block>
+
+        <clr-stack-block>
+            <clr-stack-label>Tut 2</clr-stack-label>
+            <clr-stack-content>
+                <div class="row" width="100vw">
+                    <div class="col-xs-2" align="left">
+                        <b>91% (A*)</b>
+                    </div>
+
+                    <div class="col-xs-3" align="center">
+                        Submission Timestamp: 18/10/16 17:16:04
+                    </div>
+
+                    <div class="col-xs-3" align="center">
+                        <a href="https://www.doc.ic.ac.uk/~rbc/" target="_blank">Robert Chatley</a>
+                    </div>
+
+                    <div class="col-xs-4" align="center">
+                        Collect at SAO
+                    </div>
+                </div>
+            </clr-stack-content>
+        </clr-stack-block>
+
+        <clr-stack-block>
+            <clr-stack-label>Tut 3</clr-stack-label>
+            <clr-stack-content>
+                <div class="row" width="100vw">
+                    <div class="col-xs-2" align="left">
+                        <b>86% (A+)</b>
+                    </div>
+
+                    <div class="col-xs-3" align="center">
+                        Submission Timestamp: 25/10/16 17:12:31
+                    </div>
+
+                    <div class="col-xs-3" align="center">
+                        <a href="https://www.doc.ic.ac.uk/~rbc/" target="_blank">Robert Chatley</a>
+                    </div>
+
+                    <div class="col-xs-4" align="center">
+                        Collect at SAO
+                    </div>
+                </div>
+            </clr-stack-content>
+        </clr-stack-block>
+
+        <clr-stack-block>
+            <clr-stack-label>Tut 4</clr-stack-label>
+            <clr-stack-content>
+                <div class="row" width="100vw">
+                    <div class="col-xs-2" align="left">
+                        <b>79% (A)</b>
+                    </div>
+
+                    <div class="col-xs-3" align="center">
+                        Submission Timestamp: 04/11/16 11:29:38
+                    </div>
+
+                    <div class="col-xs-3" align="center">
+                        <a href="https://www.doc.ic.ac.uk/~rbc/" target="_blank">Robert Chatley</a>
+                    </div>
+
+                    <div class="col-xs-4" align="center">
+                        Collect at SAO
+                    </div>
+                </div>
+            </clr-stack-content>
+        </clr-stack-block>
+
+        <clr-stack-block>
+            <clr-stack-label>Tut 5</clr-stack-label>
+            <clr-stack-content>
+                <div class="row" width="100vw">
+                    <div class="col-xs-2" align="left">
+                        <b>77% (A)</b>
+                    </div>
+
+                    <div class="col-xs-3" align="center">
+                        Submission Timestamp: 13/11/16 17:17:12
+                    </div>
+
+                    <div class="col-xs-3" align="center">
+                        <a href="https://www.doc.ic.ac.uk/~rbc/" target="_blank">Robert Chatley</a>
+                    </div>
+
+                    <div class="col-xs-4" align="center">
+                        Collect at SAO
+                    </div>
+                </div>
+            </clr-stack-content>
+        </clr-stack-block>
+
+        <clr-stack-block>
+            <clr-stack-label>Tut 6</clr-stack-label>
+            <clr-stack-content>
+                <div class="row" width="100vw">
+                    <div class="col-xs-2" align="left">
+                        <b>94% (A*)</b>
+                    </div>
+
+                    <div class="col-xs-3" align="center">
+                        Submission Timestamp: 15/11/16 17:12:28
+                    </div>
+
+                    <div class="col-xs-3" align="center">
+                        <a href="https://www.doc.ic.ac.uk/~rbc/" target="_blank">Robert Chatley</a>
+                    </div>
+
+                    <div class="col-xs-4" align="center">
+                        Collect at SAO
+                    </div>
+                </div>
+            </clr-stack-content>
+        </clr-stack-block>
+
+        <clr-stack-block>
+            <clr-stack-label>Tut 7</clr-stack-label>
+            <clr-stack-content>
+                <div class="row" width="100vw">
+                    <div class="col-xs-2" align="left">
+                        <b>78% (A)</b>
+                    </div>
+
+                    <div class="col-xs-3" align="center">
+                        Submission Timestamp: 23/11/16 12:05:38
+                    </div>
+
+                    <div class="col-xs-3" align="center">
+                        <a href="https://www.doc.ic.ac.uk/~rbc/" target="_blank">Robert Chatley</a>
+                    </div>
+
+                    <div class="col-xs-4" align="center">
+                        Collect at SAO
+                    </div>
+                </div>
+            </clr-stack-content>
+        </clr-stack-block>
+
+        <clr-stack-block>
+            <clr-stack-label>Tut 8</clr-stack-label>
+            <clr-stack-content>
+                <div class="row" width="100vw">
+                    <div class="col-xs-2" align="left">
+                        <b>84% (A+)</b>
+                    </div>
+
+                    <div class="col-xs-3" align="center">
+                        Submission Timestamp: 02/12/16 11:41:53
+                    </div>
+
+                    <div class="col-xs-3" align="center">
+                        <a href="https://www.doc.ic.ac.uk/~rbc/" target="_blank">Robert Chatley</a>
+                    </div>
+
+                    <div class="col-xs-4" align="center">
+                        Collect at SAO
+                    </div>
+                </div>
+            </clr-stack-content>
+        </clr-stack-block>
+
+        <clr-stack-block>
+            <clr-stack-label>Course Review</clr-stack-label>
+            <clr-stack-content>
+                <div class="row" width="100vw">
+                    <div class="col-xs-2" align="left">
+                        <b>100% (A*)</b>
+                    </div>
+
+                    <div class="col-xs-3" align="center">
+                        Submission Timestamp: 14/12/16 19:11:59
+                    </div>
+
+                    <div class="col-xs-3" align="center">
+                        <a href="https://www.doc.ic.ac.uk/~rbc/" target="_blank">Robert Chatley</a>
+                    </div>
+
+                    <div class="col-xs-4" align="center">
+                        Not Available
+                    </div>
+                </div>
+            </clr-stack-content>
+        </clr-stack-block>
+    </clr-stack-block>
+
+    <clr-stack-block [clrSbExpanded]="allExpanded">
+        <clr-stack-label>C221</clr-stack-label>
+        <clr-stack-content>Compilers</clr-stack-content>
+
+        <clr-stack-block>
+            <clr-stack-label>WACC - Specification</clr-stack-label>
+            <clr-stack-content>
+                <div class="row" width="100vw">
+                    <div class="col-xs-2" align="left">
+                        <b>89% (A+)</b>
+                    </div>
+
+                    <div class="col-xs-3" align="center">
+                        Submission Timestamp: 27/10/16 15:09:41
+                    </div>
+
+                    <div class="col-xs-3" align="center">
+                        <a href="https://www.doc.ic.ac.uk/~mjw03/PersonalWebpage/home.html" target="_blank">Mark Wheelhouse</a>
+                    </div>
+
+                    <div class="col-xs-4" align="center">
+                        Collect at SAO
+                    </div>
+                </div>
+            </clr-stack-content>
+        </clr-stack-block>
+
+        <clr-stack-block>
+            <clr-stack-label>CodeGenForFunctions</clr-stack-label>
+            <clr-stack-content>
+                <div class="row" width="100vw">
+                    <div class="col-xs-2" align="left">
+                        <b>98% (A*)</b>
+                    </div>
+
+                    <div class="col-xs-3" align="center">
+                        Submission Timestamp: 15/11/17 18:02:17
+                    </div>
+
+                    <div class="col-xs-3" align="center">
+                        <a href="https://www.imperial.ac.uk/people/p.kelly" target="_blank">Paul Kelly</a>
+                    </div>
+
+                    <div class="col-xs-4" align="center">
+                        Collect at SAO
+                    </div>
+                </div>
+            </clr-stack-content>
+        </clr-stack-block>
+    </clr-stack-block>
+
+    <clr-stack-block [clrSbExpanded]="allExpanded">
+        <clr-stack-label>C223</clr-stack-label>
+        <clr-stack-content>Concurrency</clr-stack-content>
+
+        <clr-stack-block>
+            <clr-stack-label>Coaster Coursework</clr-stack-label>
+            <clr-stack-content>
+                <div class="row" width="100vw">
+                    <div class="col-xs-2" align="left">
+                        <b>95% (A*)</b>
+                    </div>
+
+                    <div class="col-xs-3" align="center">
+                        Submission Timestamp: 30/11/16 17:12:59
+                    </div>
+
+                    <div class="col-xs-3" align="center">
+                        <a href="http://www.imperial.ac.uk/people/j.kramer" target="_blank">Jeffrey Kramer</a>
+                    </div>
+
+                    <div class="col-xs-4" align="center">
+                        Collect at SAO
+                    </div>
+                </div>
+            </clr-stack-content>
+        </clr-stack-block>
+    </clr-stack-block>
+
+    <clr-stack-block [clrSbExpanded]="allExpanded">
+        <clr-stack-label>C231</clr-stack-label>
+        <clr-stack-content>Introduction to Artificial Intelligence</clr-stack-content>
+
+        <clr-stack-block>
+            <clr-stack-label>WarOfLife</clr-stack-label>
+            <clr-stack-content>
+                <div class="row" width="100vw">
+                    <div class="col-xs-2" align="left">
+                        <b>97% (A*)</b>
+                    </div>
+
+                    <div class="col-xs-3" align="center">
+                        Submission Timestamp: 01/03/17 22:52:20
+                    </div>
+
+                    <div class="col-xs-3" align="center">
+                        <a href="https://www.doc.ic.ac.uk/~pturrini/" target="_blank">Paolo Turrini</a>
+                    </div>
+
+                    <div class="col-xs-4" align="center">
+                        Collect at SAO
+                    </div>
+                </div>
+            </clr-stack-content>
+        </clr-stack-block>
+    </clr-stack-block>
+
+    <clr-stack-block [clrSbExpanded]="allExpanded">
+        <clr-stack-label>C233</clr-stack-label>
+        <clr-stack-content>Computational Techniques</clr-stack-content>
+
+        <clr-stack-block>
+            <clr-stack-label>Coursework I</clr-stack-label>
+            <clr-stack-content>
+                <div class="row" width="100vw">
+                    <div class="col-xs-2" align="left">
+                        <b>98% (A*)</b>
+                    </div>
+
+                    <div class="col-xs-3" align="center">
+                        Submission Timestamp: 13/02/17 12:04:41
+                    </div>
+
+                    <div class="col-xs-3" align="center">
+                        <a href="https://www.imperial.ac.uk/people/a.edalat" target="_blank">Abbas Edalat</a>
+                    </div>
+
+                    <div class="col-xs-4" align="center">
+                        Collect at SAO
+                    </div>
+                </div>
+            </clr-stack-content>
+        </clr-stack-block>
+
+        <clr-stack-block>
+            <clr-stack-label>Transforms</clr-stack-label>
+            <clr-stack-content>
+                <div class="row" width="100vw">
+                    <div class="col-xs-2" align="left">
+                        <b>100% (A*)</b>
+                    </div>
+
+                    <div class="col-xs-3" align="center">
+                        Submission Timestamp: 21/03/17 10:31:28
+                    </div>
+
+                    <div class="col-xs-3" align="center">
+                        <a href="http://www.imperial.ac.uk/people/p.harrison" target="_blank">Peter Harrison</a>
+                    </div>
+
+                    <div class="col-xs-4" align="center">
+                        Collect at SAO
+                    </div>
+                </div>
+            </clr-stack-content>
+        </clr-stack-block>
+    </clr-stack-block>
+
+    <clr-stack-block [clrSbExpanded]="allExpanded">
+        <clr-stack-label>C240</clr-stack-label>
+        <clr-stack-content>Models of Computation</clr-stack-content>
+
+        <clr-stack-block>
+            <clr-stack-label>Assessed Coursework I</clr-stack-label>
+            <clr-stack-content>
+                <div class="row" width="100vw">
+                    <div class="col-xs-2" align="left">
+                        <b>98% (A*)</b>
+                    </div>
+
+                    <div class="col-xs-3" align="center">
+                        Submission Timestamp: 18/11/16 11:54:23
+                    </div>
+
+                    <div class="col-xs-3" align="center">
+                        <a href="https://psvg.doc.ic.ac.uk/people/maksimovic.html" target="_blank">Petar Maksimovic</a>
+                    </div>
+
+                    <div class="col-xs-4" align="center">
+                        Collect at SAO
+                    </div>
+                </div>
+            </clr-stack-content>
+        </clr-stack-block>
+
+        <clr-stack-block>
+            <clr-stack-label>Assessed Coursework II</clr-stack-label>
+            <clr-stack-content>
+                <div class="row" width="100vw">
+                    <div class="col-xs-2" align="left">
+                        <b>100% (A*)</b>
+                    </div>
+
+                    <div class="col-xs-3" align="center">
+                        Submission Timestamp: 15/12/16 13:27:12
+                    </div>
+
+                    <div class="col-xs-3" align="center">
+                        <a href="https://psvg.doc.ic.ac.uk/people/maksimovic.html" target="_blank">Petar Maksimovic</a>
+                    </div>
+
+                    <div class="col-xs-4" align="center">
+                        Collect at SAO
+                    </div>
+                </div>
+            </clr-stack-content>
+        </clr-stack-block>
+    </clr-stack-block>
+
+    <clr-stack-block [clrSbExpanded]="allExpanded">
+        <clr-stack-label>C245</clr-stack-label>
+        <clr-stack-content>Statistics</clr-stack-content>
+
+        <clr-stack-block>
+            <clr-stack-label>Assessed Coursework</clr-stack-label>
+            <clr-stack-content>
+                <div class="row" width="100vw">
+                    <div class="col-xs-2" align="left">
+                        <b>79% (A)</b>
+                    </div>
+
+                    <div class="col-xs-3" align="center">
+                        Submission Timestamp: 18/11/16 10:26:34
+                    </div>
+
+                    <div class="col-xs-3" align="center">
+                        <a href="http://www.imperial.ac.uk/people/dhl" target="_blank">Din-Houn Lau</a>
+                    </div>
+
+                    <div class="col-xs-4" align="center">
+                        Collect at SAO
+                    </div>
+                </div>
+            </clr-stack-content>
+        </clr-stack-block>
+    </clr-stack-block>
+
+    <clr-stack-block [clrSbExpanded]="allExpanded">
+        <clr-stack-label>C261</clr-stack-label>
+        <clr-stack-content>Laboratory 2</clr-stack-content>
+
+        <clr-stack-block>
+            <clr-stack-label>Linkload</clr-stack-label>
+            <clr-stack-content>
+                <div class="row" width="100vw">
+                    <div class="col-xs-2" align="left">
+                        <b>94% (A*)</b>
+                    </div>
+
+                    <div class="col-xs-3" align="center">
+                        Submission Timestamp: 13/10/16 18:32:43
+                    </div>
+
+                    <div class="col-xs-3" align="center">
+                        <a href="https://www.doc.ic.ac.uk/~mjw03/PersonalWebpage/home.html" target="_blank">Mark Wheelhouse</a>
+                    </div>
+
+                    <div class="col-xs-4" align="center">
+                        Collect at SAO
+                    </div>
+                </div>
+            </clr-stack-content>
+        </clr-stack-block>
+
+        <clr-stack-block>
+            <clr-stack-label>C++ Enigma</clr-stack-label>
+            <clr-stack-content>
+                <div class="row" width="100vw">
+                    <div class="col-xs-2" align="left">
+                        <b>78% (A)</b>
+                    </div>
+
+                    <div class="col-xs-3" align="center">
+                        Submission Timestamp: 17/39/54 18:32:43
+                    </div>
+
+                    <div class="col-xs-3" align="center">
+                        <a href="https://www.doc.ic.ac.uk/~mjw03/PersonalWebpage/home.html" target="_blank">Mark Wheelhouse</a>
+                    </div>
+
+                    <div class="col-xs-4" align="center">
+                        Collect at SAO
+                    </div>
+                </div>
+            </clr-stack-content>
+        </clr-stack-block>
+
+        <clr-stack-block>
+            <clr-stack-label>WACC - Front End</clr-stack-label>
+            <clr-stack-content>
+                <div class="row" width="100vw">
+                    <div class="col-xs-2" align="left">
+                        <b>83% (A+)</b>
+                    </div>
+
+                    <div class="col-xs-3" align="center">
+                        Submission Timestamp: 11/11/16 18:50:23
+                    </div>
+
+                    <div class="col-xs-3" align="center">
+                        <a href="https://www.doc.ic.ac.uk/~mjw03/PersonalWebpage/home.html" target="_blank">Mark Wheelhouse</a>
+                    </div>
+
+                    <div class="col-xs-4" align="center">
+                        Collect at SAO
+                    </div>
+                </div>
+            </clr-stack-content>
+        </clr-stack-block>
+
+        <clr-stack-block>
+            <clr-stack-label>WACC - Back End</clr-stack-label>
+            <clr-stack-content>
+                <div class="row" width="100vw">
+                    <div class="col-xs-2" align="left">
+                        <b>100% (A*)</b>
+                    </div>
+
+                    <div class="col-xs-3" align="center">
+                        Submission Timestamp: 25/11/16 17:22:10
+                    </div>
+
+                    <div class="col-xs-3" align="center">
+                        <a href="https://www.doc.ic.ac.uk/~mjw03/PersonalWebpage/home.html" target="_blank">Mark Wheelhouse</a>
+                    </div>
+
+                    <div class="col-xs-4" align="center">
+                        Collect at SAO
+                    </div>
+                </div>
+            </clr-stack-content>
+        </clr-stack-block>
+
+        <clr-stack-block>
+            <clr-stack-label>WACC - Extensions</clr-stack-label>
+            <clr-stack-content>
+                <div class="row" width="100vw">
+                    <div class="col-xs-2" align="left">
+                        <b>89% (A+)</b>
+                    </div>
+
+                    <div class="col-xs-3" align="center">
+                        Submission Timestamp: 09/12/16 18:59:05
+                    </div>
+
+                    <div class="col-xs-3" align="center">
+                        <a href="https://www.doc.ic.ac.uk/~mjw03/PersonalWebpage/home.html" target="_blank">Mark Wheelhouse</a>
+                    </div>
+
+                    <div class="col-xs-4" align="center">
+                        Collect at SAO
+                    </div>
+                </div>
+            </clr-stack-content>
+        </clr-stack-block>
+
+        <clr-stack-block>
+            <clr-stack-label>Pintos - Task 0</clr-stack-label>
+            <clr-stack-content>
+                <div class="row" width="100vw">
+                    <div class="col-xs-2" align="left">
+                        <b>96% (A*)</b>
+                    </div>
+
+                    <div class="col-xs-3" align="center">
+                        Submission Timestamp: 09/01/17 14:49:20
+                    </div>
+
+                    <div class="col-xs-3" align="center">
+                        <a href="https://www.doc.ic.ac.uk/~mjw03/PersonalWebpage/home.html" target="_blank">Mark Wheelhouse</a>
+                    </div>
+
+                    <div class="col-xs-4" align="center">
+                        Collect at SAO
+                    </div>
+                </div>
+            </clr-stack-content>
+        </clr-stack-block>
+
+        <clr-stack-block>
+            <clr-stack-label>Pintos - Task 1</clr-stack-label>
+            <clr-stack-content>
+                <div class="row" width="100vw">
+                    <div class="col-xs-2" align="left">
+                        <b>93% (A*)</b>
+                    </div>
+
+                    <div class="col-xs-3" align="center">
+                        Submission Timestamp: 03/02/17 17:07:02
+                    </div>
+
+                    <div class="col-xs-3" align="center">
+                        <a href="https://www.doc.ic.ac.uk/~mjw03/PersonalWebpage/home.html" target="_blank">Mark Wheelhouse</a>
+                    </div>
+
+                    <div class="col-xs-4" align="center">
+                        Collect at SAO
+                    </div>
+                </div>
+            </clr-stack-content>
+        </clr-stack-block>
+
+        <clr-stack-block>
+            <clr-stack-label>Pintos - Task 2</clr-stack-label>
+            <clr-stack-content>
+                <div class="row" width="100vw">
+                    <div class="col-xs-2" align="left">
+                        <b>98% (A*)</b>
+                    </div>
+
+                    <div class="col-xs-3" align="center">
+                        Submission Timestamp: 24/02/17 18:32:54
+                    </div>
+
+                    <div class="col-xs-3" align="center">
+                        <a href="https://www.doc.ic.ac.uk/~mjw03/PersonalWebpage/home.html" target="_blank">Mark Wheelhouse</a>
+                    </div>
+
+                    <div class="col-xs-4" align="center">
+                        Collect at SAO
+                    </div>
+                </div>
+            </clr-stack-content>
+        </clr-stack-block>
+
+        <clr-stack-block>
+            <clr-stack-label>Pintos - Task 3</clr-stack-label>
+            <clr-stack-content>
+                <div class="row" width="100vw">
+                    <div class="col-xs-2" align="left">
+                        <b>95% (A*)</b>
+                    </div>
+
+                    <div class="col-xs-3" align="center">
+                        Submission Timestamp: 17/03/17 18:35:17
+                    </div>
+
+                    <div class="col-xs-3" align="center">
+                        <a href="https://www.doc.ic.ac.uk/~mjw03/PersonalWebpage/home.html" target="_blank">Mark Wheelhouse</a>
+                    </div>
+
+                    <div class="col-xs-4" align="center">
+                        Collect at SAO
+                    </div>
+                </div>
+            </clr-stack-content>
+        </clr-stack-block>
+    </clr-stack-block>
+
+    <clr-stack-block [clrSbExpanded]="allExpanded">
+        <clr-stack-label>C271</clr-stack-label>
+        <clr-stack-content>2nd Year Computing Group Project</clr-stack-content>
+
+        <clr-stack-block>
+            <clr-stack-label>WebApps Iteration 1</clr-stack-label>
+            <clr-stack-content>
+                <div class="row" width="100vw">
+                    <div class="col-xs-2" align="left">
+                        <b>98% (A*)</b>
+                    </div>
+
+                    <div class="col-xs-3" align="center">
+                        Submission Timestamp: 26/05/17 15:00:00
+                    </div>
+
+                    <div class="col-xs-3" align="center">
+                        <a href="https://www.doc.ic.ac.uk/~mjw03/PersonalWebpage/home.html" target="_blank">Mark Wheelhouse</a>
+                    </div>
+
+                    <div class="col-xs-4" align="center">
+                        Not Available
+                    </div>
+                </div>
+            </clr-stack-content>
+        </clr-stack-block>
+
+        <clr-stack-block>
+            <clr-stack-label>WebApps Iteration 2</clr-stack-label>
+            <clr-stack-content>
+                <div class="row" width="100vw">
+                    <div class="col-xs-2" align="left">
+                        <b>78% (A)</b>
+                    </div>
+
+                    <div class="col-xs-3" align="center">
+                        Submission Timestamp: 02/06/17 15:00:00
+                    </div>
+
+                    <div class="col-xs-3" align="center">
+                        <a href="https://www.doc.ic.ac.uk/~mjw03/PersonalWebpage/home.html" target="_blank">Mark Wheelhouse</a>
+                    </div>
+
+                    <div class="col-xs-4" align="center">
+                        Not Available
+                    </div>
+                </div>
+            </clr-stack-content>
+        </clr-stack-block>
+
+        <clr-stack-block>
+            <clr-stack-label>WebApps Iteration 3</clr-stack-label>
+            <clr-stack-content>
+                <div class="row" width="100vw">
+                    <div class="col-xs-2" align="left">
+                        <b>Not Available</b>
+                    </div>
+
+                    <div class="col-xs-3" align="center">
+                        Not Available
+                    </div>
+
+                    <div class="col-xs-3" align="center">
+                        <a href="https://www.doc.ic.ac.uk/~mjw03/PersonalWebpage/home.html" target="_blank">Mark Wheelhouse</a>
+                    </div>
+
+                    <div class="col-xs-4" align="center">
+                        Not Available
+                    </div>
+                </div>
+            </clr-stack-content>
+        </clr-stack-block>
+
+        <clr-stack-block>
+            <clr-stack-label>WebApps Iteration 4</clr-stack-label>
+            <clr-stack-content>
+                <div class="row" width="100vw">
+                    <div class="col-xs-2" align="left">
+                        <b>Not Available</b>
+                    </div>
+
+                    <div class="col-xs-3" align="center">
+                        Not Available
+                    </div>
+
+                    <div class="col-xs-3" align="center">
+                        <a href="https://www.doc.ic.ac.uk/~mjw03/PersonalWebpage/home.html" target="_blank">Mark Wheelhouse</a>
+                    </div>
+
+                    <div class="col-xs-4" align="center">
+                        Not Available
+                    </div>
+                </div>
+            </clr-stack-content>
+        </clr-stack-block>
+
+        <clr-stack-block>
+            <clr-stack-label>WebApps Documentation</clr-stack-label>
+            <clr-stack-content>
+                <div class="row" width="100vw">
+                    <div class="col-xs-2" align="left">
+                        <b>Not Available</b>
+                    </div>
+
+                    <div class="col-xs-3" align="center">
+                        Not Available
+                    </div>
+
+                    <div class="col-xs-3" align="center">
+                        <a href="https://www.doc.ic.ac.uk/~mjw03/PersonalWebpage/home.html" target="_blank">Mark Wheelhouse</a>
+                    </div>
+
+                    <div class="col-xs-4" align="center">
+                        Not Available
+                    </div>
+                </div>
+            </clr-stack-content>
+        </clr-stack-block>
+
+        <clr-stack-block>
+            <clr-stack-label>WebApps Presentation</clr-stack-label>
+            <clr-stack-content>
+                <div class="row" width="100vw">
+                    <div class="col-xs-2" align="left">
+                        <b>Not Available</b>
+                    </div>
+
+                    <div class="col-xs-3" align="center">
+                        Not Available
+                    </div>
+
+                    <div class="col-xs-3" align="center">
+                        <a href="https://www.doc.ic.ac.uk/~mjw03/PersonalWebpage/home.html" target="_blank">Mark Wheelhouse</a>
+                    </div>
+
+                    <div class="col-xs-4" align="center">
+                        Not Available
+                    </div>
+                </div>
+            </clr-stack-content>
+        </clr-stack-block>
+    </clr-stack-block>
+
+    <clr-stack-block [clrSbExpanded]="allExpanded">
+        <clr-stack-label>C272</clr-stack-label>
+        <clr-stack-content>Team Skills Development</clr-stack-content>
+
+        <clr-stack-block>
+            <clr-stack-label>Team Skills Videos</clr-stack-label>
+            <clr-stack-content>
+                <div class="row" width="100vw">
+                    <div class="col-xs-2" align="left">
+                        <b>97% (A*)</b>
+                    </div>
+
+                    <div class="col-xs-3" align="center">
+                        Submission Timestamp: 06/12/16 20:32:31
+                    </div>
+
+                    <div class="col-xs-3" align="center">
+                        <a href="http://wp.doc.ic.ac.uk/cairesfe/" target="_blank">Catarina Fernandes</a>
+                    </div>
+
+                    <div class="col-xs-4" align="center">
+                        Not Available
+                    </div>
+                </div>
+            </clr-stack-content>
+        </clr-stack-block>
+    </clr-stack-block>
+
+    <clr-stack-block [clrSbExpanded]="allExpanded">
+        <clr-stack-label>C273</clr-stack-label>
+        <clr-stack-content>An Introduction to Law for Computer Scientists</clr-stack-content>
+
+        <clr-stack-block>
+            <clr-stack-label>Law Scenarios</clr-stack-label>
+            <clr-stack-content>
+                <div class="row" width="100vw">
+                    <div class="col-xs-2" align="left">
+                        <b>Not Available</b>
+                    </div>
+
+                    <div class="col-xs-3" align="center">
+                        Not Available
+                    </div>
+
+                    <div class="col-xs-3" align="center">
+                        <a href="http://wp.doc.ic.ac.uk/spo/person/david-ham/" target="_blank">David Ham</a>
+                    </div>
+
+                    <div class="col-xs-4" align="center">
+                        Not Available
+                    </div>
+                </div>
+            </clr-stack-content>
+        </clr-stack-block>
+    </clr-stack-block>
+
+    <clr-stack-block [clrSbExpanded]="allExpanded">
+        <clr-stack-label>C276</clr-stack-label>
+        <clr-stack-content>Introduction to Prolog</clr-stack-content>
+
+        <clr-stack-block>
+            <clr-stack-label>Assessed CW</clr-stack-label>
+            <clr-stack-content>
+                <div class="row" width="100vw">
+                    <div class="col-xs-2" align="left">
+                        <b>96% (A*)</b>
+                    </div>
+
+                    <div class="col-xs-3" align="center">
+                        Submission Timestamp: 20/01/17 17:56:29
+                    </div>
+
+                    <div class="col-xs-3" align="center">
+                        <a href="http://www.imperial.ac.uk/people/f.toni" target="_blank">Francesca Toni</a>
+                    </div>
+
+                    <div class="col-xs-4" align="center">
+                        Collect at SAO
+                    </div>
+                </div>
+            </clr-stack-content>
+        </clr-stack-block>
+    </clr-stack-block>
+</clr-stack-view>
+
+<div *ngIf="showFeedback" class="modal">
+    <div class="modal-dialog" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Display feedback in this modal for user</h3>
+            </div>
+            <div class="modal-body">
+                <p>Click 'Ok' to return to the Grades page</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" type="button" (click)="hideFeedbackModal()">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
