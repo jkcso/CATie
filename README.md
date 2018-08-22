@@ -11,7 +11,7 @@ Replaced the previous 16-year-old system and improved user experience through it
 Implemented feature-wise in Python's Django along with a PostgreSQL database.  A subset of features follows:
 * Ask: a dedicated page for each course where students can post questions and get responses from classmates or lecturers.
 * Planner: Integrates with Outlook and Google Calendar in the same website.  The goal is to then synchronise automatically with scheduling apps such as Wunderlist, Trello and others.  By this, we expect the user to ideally organise her or his day in our website and get mobile notifications about it while on the go.
-* Courses: A collection of courses a student is able to pick including details on pre-requisites, timetables, courseworks and exam info.
+* Courses: A collection of courses a student is able to pick including details on pre-requisites, timetables, courseworks and exam info.  A student is able to enroll with a click of a button and then view lecture notes and courseworks.
 * Lecture: An on-site functionality to watch recorded lectures from Panopto website without the need of redirection.
 * Login: The login feature for students and staff.
 
