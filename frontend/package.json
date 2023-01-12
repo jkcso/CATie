@@ -32,7 +32,7 @@
     "clarity-icons": "^0.9.7",
     "clarity-ui": "^0.9.7",
     "core-js": "^2.4.1",
-    "express": "^4.15.3",
+    "express": "^4.18.2",
     "fullcalendar": "^3.4.0",
     "jquery": "^3.2.1",
     "moment": "^2.18.1",
